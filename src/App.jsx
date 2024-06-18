@@ -3,6 +3,7 @@ import Movies from "./components/Movies";
 import axios from "axios";
 import styled from "styled-components";
 import Top from "./components/Top";
+import loading from "../src/assets/loading.webp"
 
 export default function App() {
 
@@ -17,7 +18,7 @@ export default function App() {
 
   if (movies === null) {
     return <Container>
-      <Loading src="../src/assets/loading.webp" alt="Carregando..." />
+      <Loading src={loading} alt="Carregando..." />
     </Container>
 
   }
