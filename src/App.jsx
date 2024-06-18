@@ -17,10 +17,13 @@ export default function App() {
   }, []);
 
   if (movies === null) {
-    return <Container>
-      <Loading src={loading} alt="Carregando..." />
-    </Container>
-
+    return (
+      <Container>
+        <LoadingStyled>
+          <Loading src={loading} alt="Carregando..." />
+        </LoadingStyled>
+      </Container>
+    )
   }
 
   return (
@@ -47,4 +50,11 @@ const Container = styled.div`
 
 const Loading = styled.img`
   height: 80px;
+`
+
+const LoadingStyled = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
