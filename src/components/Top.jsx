@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import logo from "../assets/logo.png";  
 
 export default function Top() {
     return (
         <TopStyled>
-            <img src="./src/assets/logo.png" alt="" />
+            <img src={logo} alt="logo" />
             <h1>Cineflex</h1>
         </TopStyled>
     )
