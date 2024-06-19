@@ -1,12 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../assets/logo.png";  
+import { useNavigate } from "react-router-dom";
 
 export default function Top() {
+
+    const navigate = useNavigate();
+
+    function goToHomePage() {
+        navigate('/');
+    }
+
     return (
         <TopStyled>
-            <img src={logo} alt="logo" />
-            <h1>Cineflex</h1>
+            <img src={logo} alt="logo" onClick={ goToHomePage } />
+            <h1 onClick={ goToHomePage }>Cineflex</h1>
         </TopStyled>
     )
 }
