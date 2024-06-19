@@ -47,7 +47,6 @@ const SeatsStyled = styled.div`
     font-family: "Sarala", sans-serif;
     font-size: 24px;
     width: 338px;
-    height: calc(100vh - 67px);
     padding-bottom: 20px;
 
     h2 {
