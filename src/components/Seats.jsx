@@ -47,7 +47,7 @@ const SeatsStyled = styled.div`
     font-family: "Sarala", sans-serif;
     font-size: 24px;
     width: 338px;
-    height: 100%;
+    height: calc(100vh - 67px);
     padding-bottom: 20px;
 
     h2 {
@@ -104,6 +104,7 @@ const FormStyled = styled.label`
         color: #AFAFAF;
         font-size: 16px;
         font-style: italic;
+        border: #FFF;
     }
 
     button {
@@ -116,5 +117,6 @@ const FormStyled = styled.label`
         font-family: "Sarala", sans-serif;
         font-size: 18px;
         font-weight: 700;
+        border: #EE897F;
     }
 `
