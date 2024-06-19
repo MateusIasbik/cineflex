@@ -16,7 +16,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Movies />} />
           <Route path="/sessoes/:idFilme" element={<Sessions />} />
-          <Route path="assentos" element={<Seats />} />
+          <Route path="assentos/:idSessao" element={<Seats />} />
           <Route path="sucesso" element={<Successful />} />
         </Routes>
       </Container>

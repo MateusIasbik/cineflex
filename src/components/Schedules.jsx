@@ -1,22 +1,23 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export default function Schedules( { data } ) {
-    
-    console.log(data.showtimes);
-    
+export default function Schedules({ data }) {
+
     return (
         <BoxSchedules>
-                    <h2>{`${data.weekday}, ${data.date}`}</h2>
-                    <span></span>
-                    <TimeBox>
-                        {data.showtimes.map(time => {
-                            return (
-                                <p key={time.id}>{time.name}</p>
-                            )
-                        })}
-                    </TimeBox>
-                </BoxSchedules>
+            <h2>{`${data.weekday}, ${data.date}`}</h2>
+            <span></span>
+            <TimeBox>
+                {data.showtimes.map(time => {
+                    return (
+                        <SeatsLink key={time.id} to={`/assentos/${time.id}`}>
+                            <p>{time.name}</p>
+                        </SeatsLink>
+                    )
+                })}
+            </TimeBox>
+        </BoxSchedules>
     )
 }
 
@@ -53,4 +54,9 @@ const TimeBox = styled.div`
         padding: 10px 20px;
         border-radius: 4px;
     }
+`
+
+const SeatsLink = styled(Link)`
+    text-decoration: none;
+    color: #EE897F;
 `
