@@ -1,9 +1,12 @@
 import React, { useState } from "react"
 import styled from "styled-components"
+import InputMask from "react-input-mask";
 
 export default function Seats() {
 
-    const [form, setForm] = useState("");
+    const [name, setName] = useState("");
+    const [cpf, setCpf] = useState("");
+
 
     return (
         <SeatsStyled>
@@ -20,12 +23,35 @@ export default function Seats() {
             <form>
                 <FormStyled>
                     <div>
-                        <h3>Nome do comprador(a)</h3>
-                        <input type="text" placeholder="Digite seu nome..." />
+                        <h3 htmlFor="name">Nome do comprador(a)</h3>
+                        <input
+                            id="name"
+                            required
+                            type="text"
+                            placeholder="Digite seu nome..."
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                        />
                     </div>
                     <div>
-                        <h3>CPF do comprador(a)</h3>
-                        <input type="number" placeholder="Digite seu CPF..." />
+                        <h3 htmlFor="number">CPF do comprador(a)</h3>
+                        <InputMask
+                            mask="999.999.999-99"
+                            value={cpf}
+                            onChange={e => setCpf(e.target.value)}
+                        >
+
+                            {inputProps => {
+                                return (
+                                    <input
+                                        {...inputProps}
+                                        required
+                                        type="text"
+                                        placeholder="Digite seu CPF..."
+                                    />
+                                )
+                            }}
+                        </InputMask>
                     </div>
                     <button type="submit">Reservar assento(s)</button>
                 </FormStyled>
@@ -60,7 +86,7 @@ const SeatsStyled = styled.div`
     }
 `
 
-const Chairs = styled.div`
+const Chairs = styled.label`
     color: #2B2D36;
     display: flex;
     flex-wrap: wrap;
