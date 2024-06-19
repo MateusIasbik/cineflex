@@ -104,7 +104,7 @@ const FormStyled = styled.label`
         color: #AFAFAF;
         font-size: 16px;
         font-style: italic;
-        border: #FFF;
+        border: none;
     }
 
     button {
