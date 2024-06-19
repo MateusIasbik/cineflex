@@ -46,7 +46,6 @@ const UlStyled = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 0;
 
     span {
         font-family: "Sarala", sans-serif;
@@ -64,5 +63,4 @@ const MoviesStyled = styled.div`
 
 const MovieLink = styled(Link)`
     text-decoration: none;
-    background-color: orange;
 `;
