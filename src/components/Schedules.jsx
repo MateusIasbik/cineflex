@@ -34,13 +34,13 @@ const BoxSchedules = styled.div`
     span {
         margin: 20px 0;
         width: 302px;
-        border-bottom: 2px solid #4E5A65
-        ;
+        border-bottom: 2px solid #4E5A65;
     }
 `
 
 const TimeBox = styled.div`
     width: 302px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
