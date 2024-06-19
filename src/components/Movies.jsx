@@ -46,7 +46,6 @@ const UlStyled = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
     padding: 0;
 
     span {
@@ -61,10 +60,9 @@ const MoviesStyled = styled.div`
     flex-wrap: wrap;
     padding: 16px;
     justify-content: center;
-    list-style-type: none;
 `;
 
 const MovieLink = styled(Link)`
     text-decoration: none;
-    margin: 10px;
+    background-color: orange;
 `;
