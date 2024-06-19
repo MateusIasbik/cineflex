@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Movie({ movies, setMovies, movie, index }) {
+export default function Movie({ movie }) {
 
     return (
                     <MoviesStyled>
                         <img
                             src={movie.posterURL}
-                            alt={movies.title}
-                            key={index} />
+                            alt={movie.title}
+                            key={movie.id} />
                     </MoviesStyled>
     )
 }
 
-const MoviesStyled = styled.li`
+const MoviesStyled = styled.div`
     margin: 16px;
     
     img {

@@ -1,36 +1,28 @@
-import React, { useEffect, useState } from "react";
-import Movies from "./components/Movies";
-import axios from "axios";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
+import Movies from "./components/Movies";
+// import Movie from "./components/Movie";
+import Sessions from "./components/Sessions";
+import Seats from "./components/Seats";
+import Successful from "./components/Successful";
 import Top from "./components/Top";
-import loading from "../src/assets/loading.webp"
 
 export default function App() {
 
-  const [movies, setMovies] = useState(null);
-
-  useEffect(() => {
-
-    axios.get("https://mock-api.driven.com.br/api/v8/cineflex/movies")
-      .then(response => setMovies(response.data))
-      .catch(() => (alert("Desculpe, houve um erro!")));
-  }, []);
-
-  if (movies === null) {
-    return (
-      <Container>
-        <LoadingStyled>
-          <Loading src={loading} alt="Carregando..." />
-        </LoadingStyled>
-      </Container>
-    )
-  }
-
   return (
-    <Container>
-      <Top />
-      <Movies movies={movies} setMovies={setMovies} />
-    </Container>
+    <BrowserRouter>
+      <Container>
+        <Top />
+        <Routes>
+          <Route path="/" element={<Movies />} />
+          <Route path="/sessoes/:idFilme" element={<Sessions />} />
+          {/* <Route path="/sessoes/:idFilme" element={<Movie />} /> */}
+          <Route path="assentos" element={<Seats />} />
+          <Route path="sucesso" element={<Successful />} />
+        </Routes>
+      </Container>
+    </BrowserRouter>
   )
 }
 
@@ -42,19 +34,4 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #212226;
-
-  span {
-    margin-top: 50px;
-  }
-`
-
-const Loading = styled.img`
-  height: 80px;
-`
-
-const LoadingStyled = styled.div`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
+`;
