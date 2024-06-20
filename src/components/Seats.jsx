@@ -20,13 +20,19 @@ export default function Seats() {
         if (number.isAvailable) {
             setSelectedSeats(numberSelected => {
                 if (numberSelected.includes(number.id)) {
+                    setNumberSeats(seats => seats.filter(seat => seat !== number.name));
                     return numberSelected.filter(seatId => seatId !== number.id);
                 } else {
-                    setNumberSeats(seats => [...seats, number.name]);
-                    if (numberSelected.includes)
+                    setNumberSeats(seats => {
+                        if (!seats.includes(number.name)) {
+                            return [...seats, number.name];
+                        }
+                        return seats;
+                    });
                     return [...numberSelected, number.id];
                 }
             });
+
         } else {
             alert("Este assento não está disponível");
         }
