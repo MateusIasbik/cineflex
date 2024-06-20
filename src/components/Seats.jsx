@@ -3,6 +3,7 @@ import styled from "styled-components"
 import axios from "axios";
 import Loading from "./Loading";
 import { useNavigate, useParams } from "react-router-dom";
+import InputMask from "react-input-mask";
 
 export default function Seats() {
 
@@ -12,7 +13,7 @@ export default function Seats() {
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [numberSeats, setNumberSeats] = useState([]);
     const { idSessao } = useParams();
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     function SeatsSelect(number) {
 
@@ -43,10 +44,10 @@ export default function Seats() {
         event.preventDefault();
 
         const reservationData = {
-                ids: selectedSeats,
-                name: name,
-                cpf: cpf
-            };
+            ids: selectedSeats,
+            name: name,
+            cpf: cpf
+        };
 
         axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", reservationData)
             .then(() => {
@@ -63,10 +64,10 @@ export default function Seats() {
                     .catch(() => {
                         alert("Desculpe, houve um erro ao atualizar a lista de assentos!");
                     });
-              })
-              .catch(() => {
+            })
+            .catch(() => {
                 alert("Desculpe, houve um erro ao fazer a reserva!");
-              });
+            });
 
     }
 
@@ -110,13 +111,15 @@ export default function Seats() {
                     </div>
                     <div>
                         <h3 htmlFor="number">CPF do comprador(a)</h3>
-                        <input
+                        <InputMask
+                            mask="999.999.999-99"
                             value={cpf}
                             onChange={e => setCpf(e.target.value)}
                             required
-                            type="text"
                             placeholder="Digite seu CPF..."
-                        />
+                        >
+                            {(inputProps) => <input {...inputProps} type="text" />}
+                        </InputMask>
                     </div>
                     <button type="submit">Reservar assento(s)</button>
                 </FormStyled>
