@@ -41,14 +41,15 @@ export default function Successful() {
 }
 
 const SuccessfulStyled = styled.div`
-    margin: 100px 0 70px 0;
+    height: 100vh;
+    margin: 100px 0 0 0;
     background-color: #212226;;
     color: #FFF;
     font-family: "Sarala", sans-serif;
     font-size: 24px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     font-family: "Sarala", sans-serif;
 
