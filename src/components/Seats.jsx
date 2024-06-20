@@ -10,8 +10,8 @@ export default function Seats() {
     const [cpf, setCpf] = useState("");
     const [seats, setSeats] = useState(null);
     const [selectedSeats, setSelectedSeats] = useState([]);
+    const [numberSeats, setNumberSeats] = useState([]);
     const { idSessao } = useParams();
-    const [selections, setSelections] = useState({});
     const navigate = useNavigate(); 
 
     function SeatsSelect(number) {
@@ -21,6 +21,7 @@ export default function Seats() {
                 if (numberSelected.includes(number.id)) {
                     return numberSelected.filter(seatId => seatId !== number.id);
                 } else {
+                    setNumberSeats(seats => [...seats, number.name]);
                     return [...numberSelected, number.id];
                 }
             });
@@ -49,7 +50,6 @@ export default function Seats() {
 
         axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", reservationData)
             .then(() => {
-                setSelections(reservationData);
                 alert("Reserva realizada com sucesso!");
                 setSelectedSeats([]);
                 setName("");
@@ -58,8 +58,7 @@ export default function Seats() {
                 axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`)
                     .then(response => {
                         setSeats(response.data);
-                        navigate("/sucesso", { reservationData });
-
+                        navigate("/sucesso", { state: { reservationData, seats, numberSeats } });
                     })
                     .catch(() => {
                         alert("Desculpe, houve um erro ao atualizar a lista de assentos!");

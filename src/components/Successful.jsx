@@ -1,9 +1,13 @@
 import React from "react"
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-export default function Successful(reservationData) {
-    console.log(reservationData);
+
+export default function Successful() {
+
+    const location = useLocation();
+    const { reservationData, seats, numberSeats } = location.state;
 
     const navigate = useNavigate();
 
@@ -17,16 +21,19 @@ export default function Successful(reservationData) {
             <BoxSuccessful>
                 <h3>Filme e sessão</h3>
                 <span></span>
-                <p>Homem-Aranha: através do aranhaverso</p>
-                <p>22/03/2024 às 21:00</p>
+                <p>{seats.movie.title}</p>
+                <p>{seats.day.date} às {seats.name}</p>
                 <h3>Ingressos</h3>
                 <span></span>
-                <p>Assento 15</p>
-                <p>Assento 16</p>
+                {numberSeats.map(seat => {
+                    return (
+                        <p>Assento {seat}</p>
+                    )
+                })}
                 <h3>Comprador(a)</h3>
                 <span></span>
-                <p>Nome: João da Silva Sauro</p>
-                <p>CPF: 123.456.789-10</p>
+                <p>Nome: {reservationData.name}</p>
+                <p>CPF: {reservationData.cpf}</p>
             </BoxSuccessful>
             <ButtonReturn onClick={ goToHomePage }>Voltar para tela inicial</ButtonReturn>
         </SuccessfulStyled>
@@ -34,7 +41,7 @@ export default function Successful(reservationData) {
 }
 
 const SuccessfulStyled = styled.div`
-    margin: 100px 0 40px 0;
+    margin: 100px 0 70px 0;
     background-color: #212226;;
     color: #FFF;
     font-family: "Sarala", sans-serif;
@@ -91,4 +98,5 @@ const ButtonReturn = styled.button`
     font-size: 18px;
     font-weight: 700;
     color: #2B2D36;
+    border: none;
 `
