@@ -8,8 +8,9 @@ export default function Successful() {
 
     const location = useLocation();
     const { reservationData, seats, numberSeats } = location.state;
-
     const navigate = useNavigate();
+
+    const uniqueSeats = [...new Set(numberSeats)];
 
     function goToHomePage() {
         navigate('/');
@@ -25,9 +26,9 @@ export default function Successful() {
                 <p>{seats.day.date} às {seats.name}</p>
                 <h3>Ingressos</h3>
                 <span></span>
-                {numberSeats.map(seat => {
+                {uniqueSeats.map(seat => {
                     return (
-                        <p>Assento {seat}</p>
+                        <p key={seat.id}>Assento {seat}</p>
                     )
                 })}
                 <h3>Comprador(a)</h3>

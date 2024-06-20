@@ -23,6 +23,7 @@ export default function Seats() {
                     return numberSelected.filter(seatId => seatId !== number.id);
                 } else {
                     setNumberSeats(seats => [...seats, number.name]);
+                    if (numberSelected.includes)
                     return [...numberSelected, number.id];
                 }
             });
