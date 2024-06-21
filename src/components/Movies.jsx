@@ -46,7 +46,7 @@ const UlStyled = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
+    
     span {
         font-family: "Sarala", sans-serif;
         font-size: 24px;
@@ -57,7 +57,7 @@ const UlStyled = styled.div`
 const MoviesStyled = styled.div`
     display: flex;
     flex-wrap: wrap;
-    padding: 16px;
+    padding: 16px 0 0 0;
     justify-content: center;
 `;
 
