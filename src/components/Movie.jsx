@@ -14,7 +14,7 @@ export default function Movie({ movie }) {
 }
 
 const MoviesStyled = styled.div`
-    margin: 12px;
+    margin: 10px;
     
     img {
        width: 145px;
