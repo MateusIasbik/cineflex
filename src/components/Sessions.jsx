@@ -20,7 +20,7 @@ export default function Sessions() {
                 alert("Desculpe, houve um erro!");
             });
 
-    }, [idFilme]);
+    }, []);
 
     if (sessions === null) {
         return (

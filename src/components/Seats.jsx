@@ -44,7 +44,7 @@ export default function Seats() {
             .then(response => setSeats(response.data))
             .catch(() => alert("Desculpe, houve um erro!"));
 
-    }, [idSessao]);
+    }, []);
 
     function SubmitForm(event) {
 
@@ -62,20 +62,11 @@ export default function Seats() {
                 setSelectedSeats([]);
                 setName("");
                 setCpf("");
-
-                axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`)
-                    .then(response => {
-                        setSeats(response.data);
-                        navigate("/sucesso", { state: { reservationData, seats, numberSeats } });
-                    })
-                    .catch(() => {
-                        alert("Desculpe, houve um erro ao atualizar a lista de assentos!");
-                    });
+                navigate("/sucesso", { state: { reservationData, seats, numberSeats } });
             })
             .catch(() => {
                 alert("Desculpe, houve um erro ao fazer a reserva!");
             });
-
     }
 
     if (seats === null) {
